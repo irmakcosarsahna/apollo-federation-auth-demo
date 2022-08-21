@@ -2,8 +2,8 @@
   "name": "federation-demo",
   "main": "gateway.js",
   "scripts": {
-    "start-gateway": "nodemon gateway.js",
-    "start-service-users": "nodemon services/users/index.js",
+    "start-gateway": "npx @google-cloud/functions-framework --target=handler --port=9494",
+    "start-service-users": "cd services/users && npx @google-cloud/functions-framework --target=handler --port=9595",
     "start-services": "concurrently \"npm:start-service-*\"",
     "postinstall": "lerna bootstrap"
   },
@@ -15,8 +15,9 @@
   "dependencies": {
     "@apollo/gateway": "latest",
     "@apollo/subgraph": "latest",
-    "apollo-server": "latest",
+    "apollo-server-cloud-functions": "latest",
     "graphql": "latest",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.2"
   }
 }

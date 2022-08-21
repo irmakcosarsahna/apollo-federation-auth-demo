@@ -1,4 +1,7 @@
-const {ApolloServer, gql} = require("apollo-server");
+const { ApolloServer, gql } = require('apollo-server-cloud-functions');
+const {
+    ApolloServerPluginLandingPageLocalDefault
+} = require('apollo-server-core');
 const {buildSubgraphSchema} = require("@apollo/subgraph");
 const connectDB = require('./db');
 const {UserModel} = require('./models');
@@ -44,25 +47,18 @@ const server = new ApolloServer({
         {
             typeDefs,
             resolvers,
+            csrfPrevention: true,
+            cache: 'bounded',
+            context: ({ req, res }) => ({
+                headers: req.headers,
+                req,
+                res,
+            }),
+            plugins: [
+                ApolloServerPluginLandingPageLocalDefault({ embed: true }),
+            ],
         }
     ])
 });
 
-server.listen({port: 4001}).then(({url}) => {
-    console.log(`🚀 Server ready at ${url}`);
-});
-
-const users = [
-    {
-        id: "1",
-        name: "Ada Lovelace",
-        birthDate: "1815-12-10",
-        username: "@ada"
-    },
-    {
-        id: "2",
-        name: "Alan Turing",
-        birthDate: "1912-06-23",
-        username: "@complete"
-    }
-];
+exports.handler = server.createHandler();

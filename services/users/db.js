@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const DATABASE_URL = 'mongodb+srv://irmakcosarsahna:123456Sb.@cluster0.cm5pj.mongodb.net/bikelime?retryWrites=true&w=majority';
 
 const connectDB = () => {
-    console.log('girdi')
+    console.log('girdi', new Date())
     return mongoose.connect(DATABASE_URL, {useUnifiedTopology: true, useNewUrlParser: true}, err => {
+        console.log('girdi', new Date())
         if (err){
             console.error('Connection to DB failed');
         } else{

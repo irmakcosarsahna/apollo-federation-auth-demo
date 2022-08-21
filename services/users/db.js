@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const DATABASE_URL = 'mongodb+srv://irmakcosarsahna:18022475188Cs.@cluster0.cm5pj.mongodb.net/bikelime?retryWrites=true&w=majority';
+const DATABASE_URL = 'mongodb+srv://irmakcosarsahna:123456Sb.@cluster0.cm5pj.mongodb.net/bikelime?retryWrites=true&w=majority';
 
 const connectDB = () => {
     console.log('girdi')

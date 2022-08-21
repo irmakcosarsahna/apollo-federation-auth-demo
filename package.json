@@ -5,12 +5,18 @@
     "start-gateway": "npx @google-cloud/functions-framework --target=handler --port=9494",
     "start-service-users": "cd services/users && npx @google-cloud/functions-framework --target=handler --port=9595",
     "start-services": "concurrently \"npm:start-service-*\"",
+    "start": "concurrently \"npm:start-service-*\" \"npm:start-gateway\"",
+    "watch": "npm-watch start",
     "postinstall": "lerna bootstrap"
+  },
+  "watch": {
+    "start": "*.js"
   },
   "devDependencies": {
     "concurrently": "latest",
     "lerna": "latest",
-    "nodemon": "latest"
+    "nodemon": "latest",
+    "npm-watch": "^0.11.0"
   },
   "dependencies": {
     "@apollo/gateway": "latest",

@@ -7,7 +7,6 @@ const gateway = new ApolloGateway({
             {name: "users", url: "http://localhost:9595/graphql"},
         ],
     }),
-    // Experimental: Enabling this enables the query plan view in Playground.
     __exposeQueryPlanExperimental: false,
 });
 

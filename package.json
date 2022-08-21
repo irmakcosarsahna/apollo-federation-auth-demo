@@ -1,0 +1,22 @@
+{
+  "name": "federation-demo",
+  "main": "gateway.js",
+  "scripts": {
+    "start-gateway": "nodemon gateway.js",
+    "start-service-users": "nodemon services/users/index.js",
+    "start-services": "concurrently \"npm:start-service-*\"",
+    "postinstall": "lerna bootstrap"
+  },
+  "devDependencies": {
+    "concurrently": "latest",
+    "lerna": "latest",
+    "nodemon": "latest"
+  },
+  "dependencies": {
+    "@apollo/gateway": "latest",
+    "@apollo/subgraph": "latest",
+    "apollo-server": "latest",
+    "graphql": "latest",
+    "mongoose": "^6.5.2"
+  }
+}

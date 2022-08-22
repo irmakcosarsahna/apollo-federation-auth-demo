@@ -1,5 +1,5 @@
 {
-  "name": "users",
+  "name": "userss",
   "scripts": {
     "start": "node index.js"
   },
@@ -8,8 +8,6 @@
     "@apollo/subgraph": "latest",
     "apollo-server-cloud-functions": "latest",
     "graphql": "latest",
-    "firebase-admin": "latest",
-    "firebase-functions": "latest",
     "mongoose": "latest"
   }
 }

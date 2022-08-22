@@ -1,7 +1,13 @@
 {
-  "name": "userss",
+  "name": "users",
+  "version": "1.0.0",
+  "description": "User des",
+  "main": "index.js",
+  "author": "test",
+  "license": "ISC",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "deploy": "gcloud functions deploy users --entry-point=handler --gen2 --source=. --region=us-central1 --runtime=nodejs16 --trigger-http"
   },
   "dependencies": {
     "apollo-server-core": "latest",

@@ -1,11 +1,18 @@
 {
   "name": "gateway",
+  "version": "1.0.0",
+  "description": "desc",
+  "main": "index.js",
+  "author": "test",
+  "license": "ISC",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "deploy": "gcloud functions deploy gateway --entry-point=handler --gen2 --source=. --region=us-central1 --runtime=nodejs16 --trigger-http"
   },
   "dependencies": {
     "@apollo/gateway": "latest",
     "apollo-server-cloud-functions": "latest",
+    "apollo-server-core": "^3.10.1",
     "graphql": "^16.6.0",
     "jsonwebtoken": "^8.5.1"
   }

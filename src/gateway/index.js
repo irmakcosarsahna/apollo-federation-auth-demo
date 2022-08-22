@@ -1,10 +1,13 @@
 const { ApolloServer } = require('apollo-server-cloud-functions');
 const {ApolloGateway, IntrospectAndCompose} = require("@apollo/gateway");
+const {
+    ApolloServerPluginLandingPageLocalDefault
+} = require('apollo-server-core');
 
 const gateway = new ApolloGateway({
     supergraphSdl: new IntrospectAndCompose({
         subgraphs: [
-            {name: "users", url: "http://localhost:9595/graphql"}
+            {name: "users", url: "https://users-rir2cigc2a-uc.a.run.app"}
         ],
     }),
     __exposeQueryPlanExperimental: false,
@@ -13,7 +16,16 @@ const gateway = new ApolloGateway({
 const server = new ApolloServer({
     gateway,
     engine: false,
-    subscriptions: false,
+    csrfPrevention: true,
+    cache: 'bounded',
+    context: ({req, res}) => ({
+        headers: req.headers,
+        req,
+        res,
+    }),
+    plugins: [
+        ApolloServerPluginLandingPageLocalDefault({embed: true}),
+    ]
 });
 
 
